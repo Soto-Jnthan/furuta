@@ -33,11 +33,11 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RESET_CHAR 		('*') // Character used to start the reset sequence
+#define RESET_CHAR 	('*') // Character used to start the reset sequence
 #define START_TX_CHAR 	('#') // Character used to start the state transmission
 #define STOP_TX_CHAR 	('$') // Character used to stop the state transmission
-#define USART_SOS 		('A') // Start of string
-#define USART_EOS 		('\r') // End of string
+#define USART_SOS 	('A') // Start of string
+#define USART_EOS 	('\r') // End of string
 
 #define TxBUFFER_SIZE 	(25) // Size of buffer for serial transmission (Minimum 16)
 #define RxBUFFER_SIZE 	(128) // Size of buffer for serial reception (Minimum 10)
@@ -87,19 +87,19 @@ static volatile errorTypes_t gLastError;
 
 static Stspin220_Init_t initDeviceParameters =
 {
-		8000,					//Acceleration rate in pulse/s2 (must be greater than 0)
-		8000,					//Deceleration rate in pulse/s2 (must be greater than 0)
+		8000,			//Acceleration rate in pulse/s2 (must be greater than 0)
+		8000,			//Deceleration rate in pulse/s2 (must be greater than 0)
 		MTR_RESET_MAX_SPEED,	//Running speed in pulse/s (8 pulse/s < Maximum speed <= 10 000 pulse/s )
-		8,						//Minimum speed in pulse/s (8 pulse/s <= Minimum speed < 10 000 pulse/s)
-		95,						//Acceleration current torque in % (from 0 to 100)
-		95,						//Deceleration current torque in % (from 0 to 100)
-		95,              		//Running current torque in % (from 0 to 100)
-		95,              		//Holding current torque in % (from 0 to 100)
-		TRUE,            		//Torque boost speed enable
-		325,             		//Torque boost speed threshold in fullstep/s
-		MTR_STEP_MODE,  		//Step mode via enum motorStepMode_t
-		HIZ_MODE,        		//Automatic HIZ STOP
-		100000           		//REF frequency (Hz)
+		8,			//Minimum speed in pulse/s (8 pulse/s <= Minimum speed < 10 000 pulse/s)
+		95,			//Acceleration current torque in % (from 0 to 100)
+		95,			//Deceleration current torque in % (from 0 to 100)
+		95,              	//Running current torque in % (from 0 to 100)
+		95,              	//Holding current torque in % (from 0 to 100)
+		TRUE,            	//Torque boost speed enable
+		325,             	//Torque boost speed threshold in fullstep/s
+		MTR_STEP_MODE,  	//Step mode via enum motorStepMode_t
+		HIZ_MODE,        	//Automatic HIZ STOP
+		100000           	//REF frequency (Hz)
 };
 /* USER CODE END PV */
 
