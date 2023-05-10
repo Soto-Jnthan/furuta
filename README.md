@@ -10,7 +10,7 @@ The software presented was built on top of a few pieces of preexisting code, inc
 - Re-used bits from [Quanser's code](https://git.ias.informatik.tu-darmstadt.de/quanser/clients/-/tree/master/quanser_robots/qube). Notably: 
   * their VelocityFilter class to compute the angular speeds
   * their ActionLimiter class
-- Re-used bits from [Armandpl](https://github.com/Armandpl/furuta/tree/master). Notably: 
+- Re-used bits from [Armandpl's code](https://github.com/Armandpl/furuta/tree/master). Notably: 
   * HistoryWrapper and continuity cost
 
 ## Author
