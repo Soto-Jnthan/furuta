@@ -5,7 +5,7 @@ This repository has been used during the creation and testing of the software re
 The repository contains both the code of the C application for the ARM® Cortex® MCU, which controls the low-level electronics of the system, and the Python code that handles the Gym environment and the RL model learning/inference scripts.
 
 ## Credits
-The code presented was built on top preexisting code, including:
+The software presented was built on top of a few pieces of preexisting code, including:
 - The official expansion package for the X-NUCLEO-IHM06A1 Stepper Motor Driver from [X-CUBE-SPN6](https://www.st.com/en/embedded-software/x-cube-spn6.html).
 - Re-used bits from [Quanser's code](https://git.ias.informatik.tu-darmstadt.de/quanser/clients/-/tree/master/quanser_robots/qube). Notably: 
   * their VelocityFilter class to compute the angular speeds
