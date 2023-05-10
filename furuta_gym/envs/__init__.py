@@ -1,0 +1,1 @@
+from furuta_gym.envs.furuta import Furuta
