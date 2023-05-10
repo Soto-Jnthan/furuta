@@ -6,6 +6,7 @@ The repository contains both the code of the C application for the ARMÂ® CortexÂ
 
 ## Credits
 The code presented was built on top preexisting code, including:
+- The expansion package for the X-NUCLEO-IHM06A1: [X-CUBE-SPN6](https://www.st.com/en/embedded-software/x-cube-spn6.html).
 - Re-used bits from [Quanser's code](https://git.ias.informatik.tu-darmstadt.de/quanser/clients/-/tree/master/quanser_robots/qube). Notably: 
   * their VelocityFilter class to compute the angular speeds
   * their ActionLimiter class
@@ -13,4 +14,4 @@ The code presented was built on top preexisting code, including:
   * HistoryWrapper and continuity cost
 
 ## Author
-[Jonathan Soto Peguero](https://www.linkedin.com/in/soto-jnthan/)  
+[Jonathan Soto Peguero](https://www.linkedin.com/in/soto-jnthan/) 
