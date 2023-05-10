@@ -1,6 +1,6 @@
 # Reinforcement Learning Control of a Physical Inverted Pendulum Model 
 
-This repository has been used during the creation and testing of the software related to the Warsaw University of Technology's Bachelor Diploma Work, titled "Reinforcement Learning Control of a Physical Inverted Pendulum Model."
+This repository has been used during the creation and testing of the software related to the Warsaw University of Technology's Bachelor Diploma Work titled "Reinforcement Learning Control of a Physical Inverted Pendulum Model".
 
 The repository contains both the code of the C application for the ARM® Cortex® MCU, which controls the low-level electronics of the system, and the Python code that handles the Gym environment and the RL model learning/inference scripts.
 
