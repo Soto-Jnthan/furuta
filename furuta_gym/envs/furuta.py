@@ -17,11 +17,12 @@ PH_DOT_MAX = 300 # rad/s
 TH_DOT_MAX = 400 # rad/s
 
 TH_ACT_LIM = 0.8 * np.pi # rad (must be less than np.pi)
-MTR_MAX_STEP_RATE = 4000 # microstep/s
-
 MTR_STEP_ANGLE = 1.8 # degrees
 MTR_MODE_DVSR = 8 # Power of 2 for the microstep mode
-RADS_PER_STEPS = np.radians(MTR_STEP_ANGLE / MTR_MODE_DVSR)
+MTR_MAX_STEP_RATE = 4000 # microstep/s
+
+RAD_PER_DEC = np.pi / 2048 # Conversion factor for uC's phi 
+RAD_PER_STEP = np.radians(MTR_STEP_ANGLE / MTR_MODE_DVSR) # Conversion factor for uC's theta 
 
 class Furuta(gym.Env):
     def __init__(self, port, baudrate, fs):
@@ -87,8 +88,8 @@ class Furuta(gym.Env):
     def read_state(self):
         # Return the state of the environment
         phi, theta = self.uC.read_state()
-        phi *= np.pi / 2048
-        theta *= RADS_PER_STEPS 
+        phi *= RAD_PER_DEC 
+        theta *= RAD_PER_STEP 
         pos = np.array([phi, theta]) # rad
         if self.prev_state is not None:
             dphi = phi - self.prev_state[PHI]
