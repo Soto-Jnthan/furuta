@@ -97,7 +97,8 @@ class Furuta(gym.Env):
             elif dphi > np.pi:
                 dphi -= 2 * np.pi
             vel = self.vel_filt(np.array([self.rel_phi_0 + dphi, theta])) # rad/s
-            vel *= self.timing.dt / self.timing.dt_actual if self.timing.dt_actual != 0 else 1
+            if self.timing.dt_actual != 0: # adjust to time delays
+                vel *= self.timing.dt / self.timing.dt_actual
             self.rel_phi_0 += dphi
         else:
             vel = np.array([0, 0]) # rad/s
