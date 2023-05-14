@@ -33,11 +33,11 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RESET_CHAR '*'		// Character used to start the reset sequence
-#define START_TX_CHAR '#'	// Character used to start the state transmission
-#define STOP_TX_CHAR '$'	// Character used to stop the state transmission
-#define USART_SOS 'A'		// Start of string
-#define USART_EOS '\r'		// End of string
+#define RESET_CHAR 	'*'	// Character used to start the reset sequence
+#define START_TX_CHAR 	'#'	// Character used to start the state transmission
+#define STOP_TX_CHAR 	'$'	// Character used to stop the state transmission
+#define USART_SOS 	'A'	// Start of string
+#define USART_EOS 	'\r'	// End of string
 
 #define TxBUFFER_SIZE 	(25) 	// Size of buffer for serial transmission (Minimum 16)
 #define RxBUFFER_SIZE 	(128) 	// Size of buffer for serial reception (Minimum 10)
@@ -434,7 +434,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 		if ((tx_enabled || episode_done) && !__IS_HAL_UART_TX_BUSY(&huart2))
 		{
 			size_t len = state_itoa((char*) DMA_TxBuffer, phi, theta, episode_done); //sprintf's too slow
-			HAL_UART_Transmit_DMA(&huart2, DMA_TxBuffer, len);
+			if (HAL_UART_Transmit_DMA(&huart2, DMA_TxBuffer, len) != HAL_OK)
+				Error_Handler();
 			__HAL_DMA_DISABLE_IT(huart2.hdmatx, DMA_IT_HT);
 			ACK_sent = episode_done; //'episode_done == 1' sent at least once
 		}
