@@ -33,17 +33,17 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RESET_CHAR 	'*'	// Character used to start the reset sequence
-#define START_TX_CHAR 	'#'	// Character used to start the state transmission
-#define STOP_TX_CHAR 	'$'	// Character used to stop the state transmission
-#define USART_SOS 	'A'	// Start of string
-#define USART_EOS 	'\r'	// End of string
+#define RESET_CHAR	'*'	// Character used to start the reset sequence
+#define START_TX_CHAR	'#'	// Character used to start the state transmission
+#define STOP_TX_CHAR	'$'	// Character used to stop the state transmission
+#define USART_SOS	'A'	// Start of string
+#define USART_EOS	'\r'	// End of string
 
 #define TxBUFFER_SIZE 	(25) 	// Size of buffer for serial transmission (Minimum 16)
 #define RxBUFFER_SIZE 	(128) 	// Size of buffer for serial reception (Minimum 10)
 #define ACT_QUEUE_SIZE 	(1000) 	// Size of action-execution queue (Minimum 2. Even more to avoid overrun)
 
-#define ADC_STATIC_ERROR (1995) //Angle reading should be zero when the pendulum is upright
+#define ADC_STATIC_ERROR (1995) // Angle reading should be zero when the pendulum is upright
 
 #define MTR_MOVILITY_ANGLE (2 * 360)	// degrees
 #define MTR_STEP_ANGLE (1.8)		// degrees
@@ -80,8 +80,7 @@ static uint8_t DMA_RxBuffer[RxBUFFER_SIZE];
 static uint8_t DATA_RxBuffer[RxBUFFER_SIZE];
 
 static float action_queue[ACT_QUEUE_SIZE];
-static volatile uint32_t q_head;
-static volatile uint32_t q_tail;
+static volatile uint32_t q_head, q_tail;
 
 static volatile errorTypes_t gLastError;
 
@@ -619,6 +618,7 @@ static inline void stop_if_off_limits(void)
 
 /**
  * @brief Handler when EN pin is forced low by a failure
+ * @note Suddenly changing the direction of the motor may trigger this event
  * @param None
  * @retval None
  */
