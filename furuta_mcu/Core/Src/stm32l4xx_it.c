@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    stm32l4xx_it.c
-  * @brief   Interrupt Service Routines.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    stm32l4xx_it.c
+ * @brief   Interrupt Service Routines.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -36,8 +36,6 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
-extern TIM_HandleTypeDef hTimerStepClock;
 
 /* USER CODE END PM */
 
@@ -63,7 +61,7 @@ extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
 extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
-
+extern TIM_HandleTypeDef hTimerStepClock;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -78,9 +76,9 @@ void NMI_Handler(void)
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
-  while (1)
-  {
-  }
+	while (1)
+	{
+	}
   /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
@@ -275,8 +273,8 @@ void USART2_IRQHandler(void)
 	if (__HAL_UART_GET_IT(&huart2, UART_IT_CM) && err == 0)
 	{
 		huart2.RxXferCount = (uint16_t) __HAL_DMA_GET_COUNTER(huart2.hdmarx);
-        HAL_UARTEx_RxEventCallback(&huart2, huart2.RxXferSize - huart2.RxXferCount);
-        __HAL_UART_CLEAR_IT(&huart2, UART_CLEAR_CMF);
+		HAL_UARTEx_RxEventCallback(&huart2, huart2.RxXferSize - huart2.RxXferCount);
+		__HAL_UART_CLEAR_IT(&huart2, UART_CLEAR_CMF);
 	}
 	else
 	{
