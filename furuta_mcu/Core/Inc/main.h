@@ -1,22 +1,12 @@
-/* USER CODE BEGIN Header */
 /**
  ******************************************************************************
- * @file           : main.h
- * @brief          : Header for main.c file.
- *                   This file contains the common defines of the application.
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2025 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
+ * @file    main.h
+ * @author  J.Soto
+ * @version V1.2
+ * @date    July 28th, 2025
+ * @brief   This file contains the common defines of the application.
  ******************************************************************************
  */
-/* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
@@ -28,39 +18,13 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
-
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 #include "x_nucleo_ihmxx.h"
 #include "stspin220.h"
 #include "x_nucleo_ihm06a1_stm32l4xx.h"
-#include "stm32l4xx_ll_usart.h"
-/* USER CODE END Includes */
-
-/* Exported types ------------------------------------------------------------*/
-/* USER CODE BEGIN ET */
-
-/* USER CODE END ET */
-
-/* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
-
-/* USER CODE END EC */
-
-/* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
-#define __IS_HAL_UART_TX_BUSY(__HANDLE__) ((__HANDLE__)->gState == HAL_UART_STATE_BUSY_TX)
-#define SWAP(A, B) do{__typeof__(A) C = A; A = B; B = C;}while(0)
-/* USER CODE END EM */
-
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-
-/* USER CODE BEGIN EFP */
-void MotorErrHandler(uint16_t error);
-/* USER CODE END EFP */
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Private defines -----------------------------------------------------------*/
 #define USART_BAUD_RATE 1000000
@@ -82,9 +46,9 @@ void MotorErrHandler(uint16_t error);
 #define STS_M2_Pin GPIO_PIN_6
 #define STS_M2_GPIO_Port GPIOB
 
-/* USER CODE BEGIN Private defines */
-
-/* USER CODE END Private defines */
+/* Private macros -------------------------------------------------------------*/
+#define UART_RX_DMA_HEAD(__HANDLE__) ((__HANDLE__)->RxXferSize - (__HANDLE__)->hdmarx->Instance->CNDTR)
+#define IS_UART_TX_BUSY(__HANDLE__) ((__HANDLE__)->gState == HAL_UART_STATE_BUSY_TX)
 
 #ifdef __cplusplus
 }
